@@ -5,6 +5,7 @@
 #include "image.h"
 #include "test.h"
 #include "lineDetector.h"
+#include "segmentation.h"
 #include <cmath>
 using namespace cv;
 using namespace std;
@@ -21,7 +22,7 @@ RNG rng(12345);
 /*int main(int argc, char** argv)
 {
 	/// Load source image and convert it to gray
-	src = imread("test4.jpg", 1);
+	src = imread("vertical.jpg", 1);
 
 	/// Convert image to gray and blur it
 	cvtColor(src, src_gray, CV_BGR2GRAY);
@@ -40,7 +41,7 @@ RNG rng(12345);
 }
 
 /** @function thresh_callback */
-/* void thresh_callback(int, void*)
+ /*void thresh_callback(int, void*)
 {
 	Mat canny_output;
 	vector<vector<Point> > contours;
@@ -64,7 +65,8 @@ RNG rng(12345);
 	imshow("Contours", drawing);
 	imwrite("result.jpg", drawing);
 }*/
- 
+ //////////////////////////////////
+
 int main() {
 	Image<double> src(imread("testoblique.jpg", IMREAD_COLOR));
 	Image<double> src1(imread("testoblique.jpg", IMREAD_COLOR));
@@ -88,7 +90,9 @@ int main() {
 	Image<double> src4(imread("testoblique.jpg", IMREAD_COLOR));
 	Image<double>  dst1;
 	warpAffine(src4, dst1, transform_m, src.size(), INTER_LINEAR, BORDER_CONSTANT, Scalar(255, 255, 255));
-	LineDetector::showFinalStandardHough(corrected, dst1, "e");
+	//LineDetector::showFinalStandardHough(corrected, dst1, "e");
+	Segmentation::eraseLines(dst1,v3);
+	Segmentation::segmentation(dst1);
 	waitKey(0);
 	return 0;
 }

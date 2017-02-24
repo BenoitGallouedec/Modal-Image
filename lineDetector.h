@@ -3,11 +3,7 @@
 #include <cmath>
 class LineDetector
 {
-private:
-	//Image<double> *base;
 public:
-	//LineDetector(Image<double> *b);
-	~LineDetector();
 
 	static vector<Vec4f> Standard_Hough(int threshold, Image<double>& b);
 	static vector<Vec4f> removeFalseLines(vector<Vec4f> lines);

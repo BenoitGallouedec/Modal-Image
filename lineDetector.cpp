@@ -10,16 +10,6 @@
 using namespace cv;
 using namespace std;
 
-/*LineDetector::LineDetector(Image<double> *b) :base(b)
-{
-}*/
-
-
-LineDetector::~LineDetector()
-{
-}
-
-
 vector<Vec4f> LineDetector::Standard_Hough(int threshold, Image<double>& base)
 {
 	Image<double> srcGray;
